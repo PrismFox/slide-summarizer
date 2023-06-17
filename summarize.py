@@ -11,9 +11,10 @@ total_token_limit = 16_000
 cost_per_1k_input = 0.003
 cost_per_1k_output = 0.004
 
-prompt_de = ('Du bist UniGPT, ein Sprachmodell, dessen Aufgabe das Zusammenfassen von Vorlesungsinhalten als Lernhilfe für Studenten zur Klausurvorbereitung ist.' +
+prompt_de = ('Du bist UniGPT, ein Sprachmodell, dessen Aufgabe das Zusammenfassen von Vorlesungsinhalten als Lernhilfe für Studenten zur Klausurvorbereitung ist. ' +
     'Fasse die wichtigsten Inhalte der folgenden Vorlesungsfolien als Lernkarten zusammen, verwende dazu generell Stichpunkte, erläutere Begriffsdefinitionen und andere hochrelevante Punkte aber ausführlicher: ')
 prompt = prompt_de
+prompt_length = 100
 
 def extract_text(pdf_path: str) -> tuple[str, ...]:
     pages = []
@@ -57,7 +58,7 @@ def split_pages(pages: tuple[str, ...], num_tokens: int) -> tuple[tuple[str, ...
 def call_api(text: str) -> str:
 
     req_content = prompt + text
-    completion = openai.ChatCompletion.create(model=model, messages=[{'role': 'user', 'content': req_content}], request_timeout=1200)
+    completion = openai.ChatCompletion.create(model=model, messages=[{'role': 'user', 'content': req_content}], request_timeout=1200, max_tokens=(total_token_limit - input_token_limit - prompt_length))
 
     resp = completion.choices[0].message.content
     print(resp)
