@@ -2,7 +2,7 @@
 ### Install requirements
 > pip install -r requirements.txt -U
 
-### Set your OpenAI key as an environment variable
+### Set your [OpenAI key](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) as an environment variable
 > export OPENAI_API_KEY = "sk-..."
 
 ### Run the script
