@@ -7,7 +7,9 @@
 
 ### Run the script
 > python summarize.py ./slides/*.pdf
+
 or
+
 > python summarize.py ./slides/chapter1.pdf ./slides/chapter2.pdf ./slides/chapter3.pdf
 
 # Known limitations
