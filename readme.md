@@ -14,4 +14,5 @@ or
 - The script only extracts text from the slides. The heavier the slides depend on images the worse the results will get.
 - Due to how slides are split into batches, output formatting may drastically change from one section to the next.
 - Context is limited to the same batch.
+
 A lot of this will improve when using GPT-4 due to higher token limits and the possibility of multimodal input.
